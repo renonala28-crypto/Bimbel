@@ -14,6 +14,9 @@ function initMobileSidebar() {
     const sidebar = document.querySelector('.sidebar');
     if (!sidebar) return;
 
+    if (window._sidebarInitialized) return;
+    window._sidebarInitialized = true;
+
     // 1. Ensure overlay exists
     let overlay = document.querySelector('.sidebar-overlay');
     if (!overlay) {
@@ -37,43 +40,59 @@ function initMobileSidebar() {
             </svg>
         `;
         brand.appendChild(closeBtn);
-        closeBtn.addEventListener('click', closeSidebar);
     }
 
-    // 3. Ensure toggle button exists in topbar
-    const topbars = document.querySelectorAll('.topbar');
-    if (topbars.length > 0) {
-        topbars.forEach(topbar => {
-            if (!topbar.querySelector('.sidebar-toggle-btn')) {
-                const toggleBtn = document.createElement('button');
-                toggleBtn.type = 'button';
-                toggleBtn.className = 'sidebar-toggle-btn';
-                toggleBtn.setAttribute('aria-label', 'Buka Menu Sidebar');
-                toggleBtn.innerHTML = `
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="12" x2="21" y2="12"></line>
-                        <line x1="3" y1="18" x2="21" y2="18"></line>
-                    </svg>
-                `;
-                topbar.insertAdjacentElement('afterbegin', toggleBtn);
-                toggleBtn.addEventListener('click', toggleSidebar);
-            }
-        });
-    }
-
-    // 4. Attach event listener to all existing sidebar toggles
-    document.querySelectorAll('.sidebar-toggle-btn, #sidebarToggle, #mobileSidebarToggle').forEach(btn => {
-        btn.onclick = toggleSidebar;
+    // 3. Ensure toggle button exists in all topbars/headers
+    const topbars = document.querySelectorAll('.topbar, .header, .dashboard-header');
+    topbars.forEach(topbar => {
+        if (!topbar.querySelector('.sidebar-toggle-btn')) {
+            const toggleBtn = document.createElement('button');
+            toggleBtn.type = 'button';
+            toggleBtn.className = 'sidebar-toggle-btn';
+            toggleBtn.setAttribute('aria-label', 'Buka Menu Sidebar');
+            toggleBtn.innerHTML = `
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            `;
+            topbar.insertAdjacentElement('afterbegin', toggleBtn);
+        }
     });
 
-    // Toggle function
-    function toggleSidebar(e) {
-        if (e) {
+    // 4. Centralized click event delegation - prevents double firing and supports SVGs
+    document.addEventListener('click', function(e) {
+        // Check toggle button
+        const toggleBtn = e.target.closest('.sidebar-toggle-btn, #sidebarToggle, #mobileSidebarToggle');
+        if (toggleBtn) {
             e.preventDefault();
             e.stopPropagation();
+            toggleSidebar();
+            return;
         }
-        const isOpen = document.body.classList.contains('sidebar-open') || sidebar.classList.contains('active');
+
+        // Check close button
+        const closeBtn = e.target.closest('.sidebar-close-btn');
+        if (closeBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeSidebar();
+            return;
+        }
+
+        // Check overlay click
+        if (e.target.matches('.sidebar-overlay') || e.target.closest('.sidebar-overlay')) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeSidebar();
+            return;
+        }
+    });
+
+    function toggleSidebar() {
+        const isOpen = document.body.classList.contains('sidebar-open') || 
+                       document.querySelector('.sidebar.active') !== null;
         if (isOpen) {
             closeSidebar();
         } else {
@@ -82,21 +101,20 @@ function initMobileSidebar() {
     }
 
     function openSidebar() {
-        sidebar.classList.add('active');
+        document.querySelectorAll('.sidebar').forEach(el => el.classList.add('active'));
         document.body.classList.add('sidebar-open');
-        if (overlay) overlay.classList.add('active');
+        const currentOverlay = document.querySelector('.sidebar-overlay');
+        if (currentOverlay) currentOverlay.classList.add('active');
     }
 
     function closeSidebar() {
-        sidebar.classList.remove('active');
+        document.querySelectorAll('.sidebar').forEach(el => el.classList.remove('active'));
         document.body.classList.remove('sidebar-open');
-        if (overlay) overlay.classList.remove('active');
+        const currentOverlay = document.querySelector('.sidebar-overlay');
+        if (currentOverlay) currentOverlay.classList.remove('active');
     }
 
-    // Close when overlay clicked
-    overlay.addEventListener('click', closeSidebar);
-
-    // Close when Escape pressed
+    // Close when Escape key pressed
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && document.body.classList.contains('sidebar-open')) {
             closeSidebar();
@@ -104,15 +122,14 @@ function initMobileSidebar() {
     });
 
     // Auto-close on mobile when a nav item link is clicked
-    sidebar.querySelectorAll('.sidebar-nav a').forEach(link => {
-        link.addEventListener('click', function() {
-            if (window.innerWidth <= 768) {
-                closeSidebar();
-            }
-        });
+    document.addEventListener('click', function(e) {
+        const navLink = e.target.closest('.sidebar .sidebar-nav a, .sidebar .nav-item, .sidebar .nav-sub-item');
+        if (navLink && window.innerWidth <= 768) {
+            closeSidebar();
+        }
     });
 
-    // Touch swipe left to close sidebar on mobile
+    // Touch swipe left on sidebar to close on mobile
     let touchStartX = 0;
     let touchStartY = 0;
     sidebar.addEventListener('touchstart', function(e) {
@@ -123,7 +140,7 @@ function initMobileSidebar() {
     sidebar.addEventListener('touchend', function(e) {
         const touchEndX = e.changedTouches[0].screenX;
         const touchEndY = e.changedTouches[0].screenY;
-        if (touchStartX - touchEndX > 50 && Math.abs(touchStartY - touchEndY) < 80) {
+        if (touchStartX - touchEndX > 45 && Math.abs(touchStartY - touchEndY) < 80) {
             closeSidebar();
         }
     }, { passive: true });

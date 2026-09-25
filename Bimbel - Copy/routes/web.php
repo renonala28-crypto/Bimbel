@@ -79,7 +79,6 @@ Route::middleware(['auth', 'active'])->group(function () {
     Route::get('/materi', [SiswaMateriController::class, 'index'])->name('siswa.materi');
     Route::get('/perkembangan', [SiswaPerkembanganController::class, 'index'])->name('siswa.perkembangan');
     Route::get('/leaderboard', [SiswaLeaderboardController::class, 'index'])->name('siswa.leaderboard');
-    Route::get('/laporan-perkembangan', [LaporanPerkembanganController::class, 'index'])->name('siswa.laporan');
     Route::get('/kalkulator-samapta', [SiswaKalkulatorSamaptaController::class, 'index'])->name('siswa.kalkulator-samapta');
     Route::get('/sudoku', function () {
         return redirect()->route('siswa.dashboard');
@@ -124,8 +123,15 @@ Route::middleware(['auth', 'admin'])->group(function () {
     });
     Route::post('/api/admin/siswa/update', [AdminDashboardController::class, 'updateSiswa']);
     Route::post('/api/admin/siswa/deactivate', [AdminDashboardController::class, 'deactivateSiswa']);
-    Route::get('/admin/laporan-perkembangan', [LaporanPerkembanganController::class, 'index'])->name('admin.laporan');
-    Route::get('/admin/laporanPerkembangan', [LaporanPerkembanganController::class, 'index']);
+    Route::get('/laporan-perkembangan', function () {
+        return redirect()->route('admin.detail-laporan');
+    });
+    Route::get('/admin/laporan-perkembangan', function () {
+        return redirect()->route('admin.detail-laporan');
+    });
+    Route::get('/admin/laporanPerkembangan', function () {
+        return redirect()->route('admin.detail-laporan');
+    });
     Route::get('/admin/detail-laporan', [LaporanPerkembanganController::class, 'detail'])->name('admin.detail-laporan');
     Route::get('/admin/detail-laporan-perkembangan', [LaporanPerkembanganController::class, 'detail']);
     Route::get('/admin/ganti-password', [AuthController::class, 'showChangePassword'])->name('admin.ganti-password');
@@ -143,7 +149,7 @@ Route::get('/konten', function () {
     return redirect()->route('admin.konten');
 });
 Route::get('/laporanPerkembangan', function () {
-    return redirect('/laporan-perkembangan');
+    return redirect('/admin/detail-laporan');
 });
 Route::get('/detail-laporan', function () {
     return redirect('/admin/detail-laporan');

@@ -358,7 +358,67 @@
     </header>
 
 
-    <!-- 3. Service Summary / Fitur Program -->
+    <!-- 3. Layanan / Tentang Kami Detailed -->
+    <section id="tentang" class="bg-surface-container-low py-24 transition-colors">
+        <div class="px-margin max-w-[1280px] mx-auto">
+            <div class="mb-16">
+                <span class="text-primary font-label-md text-label-md uppercase tracking-[0.2em] block mb-2">About Us</span>
+                <h2 class="font-headline-lg text-headline-lg uppercase text-primary">Tentang <?php echo APP_NAME; ?></h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center">
+
+                <!-- Visual Image Card -->
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                    <!-- GANTI DENGAN FOTO ASLI -->
+                    <img src="/assets/images/tentang-taruna.jpg" alt="Tentang Bimbel Alahaido" class="w-full h-[450px] object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?q=80&w=1200&auto=format&fit=crop';">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 text-white">
+                        <span class="font-label-md text-xs uppercase tracking-widest text-accent">Disiplin &amp; Terukur</span>
+                        <h3 class="font-title-md text-xl font-bold">Membangun Karakter Taruna Unggul</h3>
+                    </div>
+                </div>
+
+                <!-- Detailed Content -->
+                <div class="space-y-6">
+                    <h3 class="font-headline-lg text-2xl sm:text-3xl text-primary uppercase leading-tight">
+                        Portal Belajar Satu Pintu Khusus Persiapan Casis TNI, POLRI &amp; Kedinasan
+                    </h3>
+                    <p class="text-on-surface-variant font-body-lg leading-relaxed">
+                        <strong><?php echo APP_NAME; ?></strong> dirancang khusus sebagai sistem terpadu dalam menemani perjuangan calon siswa taruna. Kami mengintegrasikan kedisiplinan, kesiapan akademik, latihan psikologi kecermatan, dan ketahanan fisik dalam satu portal intuitif.
+                    </p>
+
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-start gap-3 text-on-surface font-body-sm p-3.5 rounded-xl bg-white border border-outline-variant/30 shadow-sm">
+                            <span class="material-symbols-outlined text-secondary text-xl shrink-0 mt-0.5">verified</span>
+                            <div>
+                                <strong class="text-primary block font-title-md text-base">Kurikulum Terpadu &amp; Simulasi Real-Time</strong>
+                                Antarmuka dan timer ujian disesuaikan dengan standar CAT asli kepolisian &amp; kedinasan.
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 text-on-surface font-body-sm p-3.5 rounded-xl bg-white border border-outline-variant/30 shadow-sm">
+                            <span class="material-symbols-outlined text-secondary text-xl shrink-0 mt-0.5">verified</span>
+                            <div>
+                                <strong class="text-primary block font-title-md text-base">Pembinaan Fisik &amp; Mental Komprehensif</strong>
+                                Modul materi jasmani (Lari, Renang, Pull-up) dilengkapi grafik pantau capaian secara berkala.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <a href="<?php echo route('register'); ?>" class="inline-flex items-center gap-2 bg-secondary text-white font-label-md text-label-md uppercase tracking-wider px-6 py-3 rounded-lg hover:bg-secondary/80 transition-all shadow-md">
+                            Daftar Calon Siswa Sekarang <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 4. Service Summary / Fitur Program -->
     <section id="program" class="py-24 px-margin max-w-[1280px] mx-auto">
         <div class="mb-16">
             <span class="text-primary font-label-md text-label-md uppercase tracking-[0.2em] block mb-2">Capabilities</span>
@@ -504,66 +564,6 @@
     </section>
 
 
-    <!-- 3b. Layanan / Tentang Kami Detailed -->
-    <section id="tentang" class="bg-surface-container-low py-24 transition-colors">
-        <div class="px-margin max-w-[1280px] mx-auto">
-            <div class="mb-16">
-                <span class="text-primary font-label-md text-label-md uppercase tracking-[0.2em] block mb-2">About Us</span>
-                <h2 class="font-headline-lg text-headline-lg uppercase text-primary">Tentang <?php echo APP_NAME; ?></h2>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center">
-
-                <!-- Visual Image Card -->
-                <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
-                    <!-- GANTI DENGAN FOTO ASLI -->
-                    <img src="/assets/images/tentang-taruna.jpg" alt="Tentang Bimbel Alahaido" class="w-full h-[450px] object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?q=80&w=1200&auto=format&fit=crop';">
-                    <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-transparent to-transparent"></div>
-                    <div class="absolute bottom-6 left-6 right-6 text-white">
-                        <span class="font-label-md text-xs uppercase tracking-widest text-accent">Disiplin &amp; Terukur</span>
-                        <h3 class="font-title-md text-xl font-bold">Membangun Karakter Taruna Unggul</h3>
-                    </div>
-                </div>
-
-                <!-- Detailed Content -->
-                <div class="space-y-6">
-                    <h3 class="font-headline-lg text-2xl sm:text-3xl text-primary uppercase leading-tight">
-                        Portal Belajar Satu Pintu Khusus Persiapan Casis TNI, POLRI &amp; Kedinasan
-                    </h3>
-                    <p class="text-on-surface-variant font-body-lg leading-relaxed">
-                        <strong><?php echo APP_NAME; ?></strong> dirancang khusus sebagai sistem terpadu dalam menemani perjuangan calon siswa taruna. Kami mengintegrasikan kedisiplinan, kesiapan akademik, latihan psikologi kecermatan, dan ketahanan fisik dalam satu portal intuitif.
-                    </p>
-
-                    <div class="space-y-3 pt-2">
-                        <div class="flex items-start gap-3 text-on-surface font-body-sm p-3.5 rounded-xl bg-white border border-outline-variant/30 shadow-sm">
-                            <span class="material-symbols-outlined text-secondary text-xl shrink-0 mt-0.5">verified</span>
-                            <div>
-                                <strong class="text-primary block font-title-md text-base">Kurikulum Terpadu &amp; Simulasi Real-Time</strong>
-                                Antarmuka dan timer ujian disesuaikan dengan standar CAT asli kepolisian &amp; kedinasan.
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-3 text-on-surface font-body-sm p-3.5 rounded-xl bg-white border border-outline-variant/30 shadow-sm">
-                            <span class="material-symbols-outlined text-secondary text-xl shrink-0 mt-0.5">verified</span>
-                            <div>
-                                <strong class="text-primary block font-title-md text-base">Pembinaan Fisik &amp; Mental Komprehensif</strong>
-                                Modul materi jasmani (Lari, Renang, Pull-up) dilengkapi grafik pantau capaian secara berkala.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pt-4">
-                        <a href="<?php echo route('register'); ?>" class="inline-flex items-center gap-2 bg-secondary text-white font-label-md text-label-md uppercase tracking-wider px-6 py-3 rounded-lg hover:bg-secondary/80 transition-all shadow-md">
-                            Daftar Calon Siswa Sekarang <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-
     <!-- 4. Alur Pendaftaran Section -->
     <section id="alur" class="py-24 px-margin max-w-[1280px] mx-auto">
         <div class="mb-16">
@@ -623,74 +623,74 @@
 
 
     <!-- 5. Statistics & Kenapa Kami Section -->
-    <section id="kenapa" class="bg-primary text-white py-24">
+    <section id="kenapa" class="bg-surface-container-low py-24 transition-colors">
         <div class="px-margin max-w-[1280px] mx-auto space-y-16">
             
             <!-- Statistics Banner -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center border-b border-white/10 pb-16">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center border-b border-outline-variant/30 pb-16">
                 <div>
-                    <div class="font-display-lg text-display-lg text-accent mb-2">1.500+</div>
-                    <div class="font-label-md text-label-md text-white/70 uppercase tracking-widest">Siswa Terdaftar</div>
+                    <div class="font-display-lg text-display-lg text-primary mb-2">1.500+</div>
+                    <div class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Siswa Terdaftar</div>
                 </div>
                 <div>
-                    <div class="font-display-lg text-display-lg text-accent mb-2">95%</div>
-                    <div class="font-label-md text-label-md text-white/70 uppercase tracking-widest">Tingkat Kelulusan</div>
+                    <div class="font-display-lg text-display-lg text-primary mb-2">95%</div>
+                    <div class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Tingkat Kelulusan</div>
                 </div>
                 <div>
-                    <div class="font-display-lg text-display-lg text-accent mb-2">100+</div>
-                    <div class="font-label-md text-label-md text-white/70 uppercase tracking-widest">Paket Tryout CBT</div>
+                    <div class="font-display-lg text-display-lg text-primary mb-2">100+</div>
+                    <div class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Paket Tryout CBT</div>
                 </div>
                 <div>
-                    <div class="font-display-lg text-display-lg text-accent mb-2">100%</div>
-                    <div class="font-label-md text-label-md text-white/70 uppercase tracking-widest">Progres Transparan</div>
+                    <div class="font-display-lg text-display-lg text-primary mb-2">100%</div>
+                    <div class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Progres Transparan</div>
                 </div>
             </div>
 
             <!-- Kenapa Pilih Kami Grid -->
             <div>
                 <div class="text-center max-w-2xl mx-auto mb-12">
-                    <span class="font-label-md text-label-md text-accent uppercase tracking-widest">Why Choose Us</span>
-                    <h2 class="font-headline-lg text-headline-lg uppercase text-white mt-1">Mengapa Memilih <?php echo APP_NAME; ?>?</h2>
+                    <span class="font-label-md text-label-md text-primary uppercase tracking-widest block mb-1">Why Choose Us</span>
+                    <h2 class="font-headline-lg text-headline-lg uppercase text-primary mt-1">Mengapa Memilih <?php echo APP_NAME; ?>?</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
                     
-                    <div class="glass-dark-card p-6 rounded-xl border border-white/10 space-y-3 hover-lift">
-                        <div class="w-12 h-12 rounded-lg bg-accent/20 text-accent flex items-center justify-center">
+                    <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 space-y-3 hover-lift shadow-sm hover:shadow-xl transition-all">
+                        <div class="w-12 h-12 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center">
                             <span class="material-symbols-outlined text-2xl">school</span>
                         </div>
-                        <h3 class="font-title-md text-title-md text-white uppercase">Materi Terstruktur</h3>
-                        <p class="text-slate-300 text-sm leading-relaxed">
+                        <h3 class="font-title-md text-title-md text-primary uppercase">Materi Terstruktur</h3>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
                             Disusun secara sistematis mengacu pada kisi-kisi resmi seleksi TNI, POLRI, dan Sekolah Kedinasan.
                         </p>
                     </div>
 
-                    <div class="glass-dark-card p-6 rounded-xl border border-white/10 space-y-3 hover-lift">
-                        <div class="w-12 h-12 rounded-lg bg-emerald-400/20 text-emerald-400 flex items-center justify-center">
+                    <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 space-y-3 hover-lift shadow-sm hover:shadow-xl transition-all">
+                        <div class="w-12 h-12 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
                             <span class="material-symbols-outlined text-2xl">monitoring</span>
                         </div>
-                        <h3 class="font-title-md text-title-md text-white uppercase">Progres Transparan</h3>
-                        <p class="text-slate-300 text-sm leading-relaxed">
+                        <h3 class="font-title-md text-title-md text-primary uppercase">Progres Transparan</h3>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
                             Setiap hasil latihan tercatat rasional dalam bentuk grafik sehingga perkembangan Anda terpantau jelas.
                         </p>
                     </div>
 
-                    <div class="glass-dark-card p-6 rounded-xl border border-white/10 space-y-3 hover-lift">
-                        <div class="w-12 h-12 rounded-lg bg-amber-400/20 text-amber-400 flex items-center justify-center">
+                    <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 space-y-3 hover-lift shadow-sm hover:shadow-xl transition-all">
+                        <div class="w-12 h-12 rounded-lg bg-amber-50 text-amber-500 flex items-center justify-center">
                             <span class="material-symbols-outlined text-2xl">psychology</span>
                         </div>
-                        <h3 class="font-title-md text-title-md text-white uppercase">Latihan Kecermatan</h3>
-                        <p class="text-slate-300 text-sm leading-relaxed">
+                        <h3 class="font-title-md text-title-md text-primary uppercase">Latihan Kecermatan</h3>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
                             Mengasah ketahanan mental &amp; konsentrasi siswa secara berkala melalui tes kecermatan interaktif.
                         </p>
                     </div>
 
-                    <div class="glass-dark-card p-6 rounded-xl border border-white/10 space-y-3 hover-lift">
-                        <div class="w-12 h-12 rounded-lg bg-indigo-400/20 text-indigo-400 flex items-center justify-center">
+                    <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/30 space-y-3 hover-lift shadow-sm hover:shadow-xl transition-all">
+                        <div class="w-12 h-12 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
                             <span class="material-symbols-outlined text-2xl">leaderboard</span>
                         </div>
-                        <h3 class="font-title-md text-title-md text-white uppercase">Kompetisi Sehat</h3>
-                        <p class="text-slate-300 text-sm leading-relaxed">
+                        <h3 class="font-title-md text-title-md text-primary uppercase">Kompetisi Sehat</h3>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">
                             Papan peringkat nasional memacu semangat belajar tinggi untuk terus meningkatkan skor terbaik Anda.
                         </p>
                     </div>
